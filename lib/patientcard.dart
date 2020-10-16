@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'package:path/path.dart';
+import 'package:excel/excel.dart';
 // Uncomment lines 7 and 10 to view the visual layout at runtime.
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
 void main() {
   // debugPaintSizeEnabled = true;
+  //get variables
+
   runApp(PatientCard());
 }
 
@@ -13,8 +18,9 @@ class PatientCard extends StatelessWidget {
     Widget demographics = Container(
       margin: const EdgeInsets.only(left: 12.0, right: 12.0),
       padding: const EdgeInsets.all(12),
+      //demographics and vital columns:
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
             decoration: BoxDecoration(
@@ -22,35 +28,61 @@ class PatientCard extends StatelessWidget {
               border: Border.all(color: Colors.black38, width: 1),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Column(
+            //demographics column
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                /*2*/
                 Container(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(
-                    'Age: ',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                  padding: const EdgeInsets.only(
+                      bottom: 8, top: 8, left: 12, right: 24),
+                  child: Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            'Age: ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'Gender: ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'Race: ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(
-                    'Gender: ',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(
-                    'Race: ',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                  padding: const EdgeInsets.only(
+                      bottom: 8, top: 8, left: 12, right: 24),
+                  child: Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '27',
+                          ),
+                          Text(
+                            'F',
+                          ),
+                          Text(
+                            'Black',
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -66,16 +98,18 @@ class PatientCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: const EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.only(
+                      bottom: 8, top: 8, left: 12, right: 24),
                   child: Text(
-                    'Temperature (C): ',
+                    'Temperature: ',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.only(bottom: 8),
+                  padding:
+                      const EdgeInsets.only(bottom: 8, left: 12, right: 24),
                   child: Text(
                     'Respiratory Rate: ',
                     style: TextStyle(
@@ -84,7 +118,8 @@ class PatientCard extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.only(bottom: 8),
+                  padding:
+                      const EdgeInsets.only(bottom: 8, left: 12, right: 24),
                   child: Text(
                     'Blood Pressure: ',
                     style: TextStyle(
@@ -93,18 +128,20 @@ class PatientCard extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.only(bottom: 8),
+                  padding:
+                      const EdgeInsets.only(bottom: 8, left: 12, right: 24),
                   child: Text(
-                    'O2 Saturation: #/#',
+                    'O\u2082 Saturation:',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.only(bottom: 8),
+                  padding:
+                      const EdgeInsets.only(bottom: 8, left: 12, right: 24),
                   child: Text(
-                    'O2 Received: #/min',
+                    'O\u2082 Received:',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
